@@ -119,7 +119,7 @@ option_end()
 
 if has_config("moore-gpu") then
     add_defines("ENABLE_MOORE_API")
-    includes("xmake/musa.lua")
+    includes("xmake/moore.lua")
 end
 
 -- 海光
@@ -287,6 +287,9 @@ target("infiniccl")
     end
     if has_config("ascend-npu") then
         add_deps("infiniccl-ascend")
+    end
+    if has_config("cambricon-mlu") then
+        add_deps("infiniccl-cambricon")
     end
     if has_config("metax-gpu") then
         add_deps("infiniccl-metax")
